@@ -1,0 +1,620 @@
+<%@ page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+<!doctype html>
+
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async
+	src="https://www.googletagmanager.com/gtag/js?id=UA-89660272-1"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-89660272-1');
+</script>
+<!-- Set Meta -->
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Tamimi Markets Raffle</title>
+<meta name="author" content="Philoshopic">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- Load Favicon-->
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/${CLIENT}/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/${CLIENT}/assets/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/${CLIENT}/assets/favicon-16x16.png">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+	crossorigin="anonymous"></script>
+
+<!-- Load jQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Load jQuery UI -->
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- Load Tooltipster Script -->
+<link rel="stylesheet" type="text/css"
+	href="/${CLIENT}/assets/tooltipster/css/tooltipster.bundle.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="/${CLIENT}/assets/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+<script type="text/javascript"
+	src="/${CLIENT}/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+
+
+<!-- Load Scripts -->
+<script src="/${CLIENT}/assets/script.js?v=1.0"></script>
+
+<link rel="stylesheet"
+	href="/${CLIENT}/assets/intl-tel-input/css/intlTelInput.css">
+<script src="/${CLIENT}/assets/intl-tel-input/js/intlTelInput.js"></script>
+
+
+<style>
+@font-face {
+	font-family: 'DinNextArabicBold';
+	src: url('/${CLIENT}/assets/raffle/fonts/DinNextArabicBold.otf');
+}
+
+@font-face {
+	font-family: 'DinNextArabicHeavy';
+	src: url('/${CLIENT}/assets/raffle/fonts/DinNextArabicHeavy.otf');
+}
+
+@font-face {
+	font-family: 'DinNextArabicMedium';
+	src: url('/${CLIENT}/assets/raffle/fonts/DinNextArabicMedium.otf');
+}
+
+@font-face {
+	font-family: 'DinNextArabicRegular';
+	src: url('/${CLIENT}/assets/raffle/fonts/DinNextArabicRegular.otf');
+}
+
+@font-face {
+	font-family: "TeshrinARLTHeavy";
+	src: url("/${CLIENT}/assets/raffle/fonts/TeshrinARLTHeavy.otf");
+}
+
+@font-face {
+	font-family: 'TeshrinARLTMedium';
+	src: url('/${CLIENT}/assets/raffle/fonts/TeshrinARLTMedium.otf');
+}
+
+@font-face {
+	font-family: 'TeshrinARLTRegular';
+	src: url('/${CLIENT}/assets/raffle/fonts/TeshrinARLTRegular.otf');
+}
+
+.iti__flag {
+	background-image: url("intl-tel-input-17.0.0/build/img/flags.png");
+}
+
+@media ( -webkit-min-device-pixel-ratio : 2) , ( min-resolution :
+	192dpi) {
+	.iti__flag {
+		background-image: url("intl-tel-input-17.0.0/build/img/flags@2x.png");
+	}
+}
+
+.ar-text {
+	direction: rtl !important;
+}
+
+.citySelect, .ar-text, label {
+	font-family: 'TeshrinARLTMedium';
+}
+
+.modal-dialog, .iti__country-name {
+	color: black;
+}
+
+.iti--allow-dropdown {
+	display: block;
+}
+
+.text-default-color {
+	color: white;
+}
+
+.citySelect {
+	text-align: right;
+	color: #d1d1d1;
+}
+
+.termsCheck label {
+	margin-right: 1%;
+}
+
+body {
+	background-color: #47090b;
+	background-image: none;
+}
+
+#dayId {
+	font-size: 6em;
+}
+
+.termsCheck label {
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+.hr-line {
+	color: white;
+	border: 1px solid white;
+}
+
+.terms-wrapper-en p {
+	font-family: 'TeshrinARLTRegular';
+}
+
+.form-label {
+	font-size: 0.62em;
+}
+
+.en-form .form-label, .ar-form .form-label {
+	font-family: 'TeshrinARLTMedium';
+}
+
+.btn {
+	border-radius: 15px;
+	border: 1px solid #888888;
+	background: white;
+	color: black;
+	margin-top: 1%;
+}
+
+html body .submitRaffle.btn {
+	font-size: 1.5em !important;
+}
+
+.raffles-logo-mobile, .raffles-cover-1-mobile {
+	width: 100%;
+	height: auto;
+}
+
+.raffles-logo-mobile {
+	position: absolute;
+}
+
+p {
+	margin-bottom: 0 !important;
+}
+
+.raffles-container {
+	margin-top: -60%;
+	width: 100%;
+	position: relative;
+}
+
+.terms-heading {
+	background: white;
+	display: inline-block;
+	color: red;
+	text-transform: uppercase;
+	width: 285px;
+	font-size: 1.5em;
+	padding-left: 5px;
+	margin-bottom: 1em;
+}
+
+.terms-wrapper-en .terms-heading {
+	font-family: "DinNextArabicBold";
+}
+
+.ar-text .terms-heading {
+	font-family: "DinNextArabicMedium";
+}
+
+.error-messages-wrapper {
+	border: 5px solid #fffb00;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+@media ( min-width : 992px) {
+	.form-label {
+		font-size: 1em;
+	}
+	.raffles-logo-mobile, .raffles-cover-1-mobile {
+		display: none;
+	}
+	body {
+		background-size: 100%;
+		background-image:
+			url("/${CLIENT}/assets/raffle/raffles-cover-1-desktop.png");
+		background-repeat: no-repeat;
+	}
+	.raffles-container {
+		margin-top: 34%;
+		width: 100%;
+	}
+}
+
+@media ( min-width : 1400px) {
+	.raffle-counter-wrapper {
+		position: absolute;
+		z-index: -1;
+		width: 250px;
+		right: -45%;
+		top: 1.3%;
+	}
+	.raffles-container {
+		margin-top: 34%;
+		width: 50%;
+	}
+}
+</style>
+
+</head>
+
+
+<body style="position: relative;">
+	<img class="raffles-cover-1-mobile"
+		src="/${CLIENT}/assets/raffle/mobile_app_top_header.png" />
+	<!--COVER IMG BEGIN ****************-->
+	<div class="container raffles-container text-default-color en-form"
+		id="main-raffles-container">
+		<!--RAFFLE REGISTER FORM BEGIN ****************-->
+		<form class="row g-3" id="enter-raffle-form" onsubmit="return false;">
+			<div class="text-center raffle-counter-wrapper">
+				<div class="ar-text"
+					style="font-size: 15px; font-family: 'TeshrinARLTHeavy';">
+					رقم التصريح: 2063594 :.Permit No</div>
+			</div>
+			<div class="mb-3">
+				<label for="exampleFormControlInput1"
+					class="form-label FormLabelsEn"> Name </label> <label
+					for="exampleFormControlInput1" class="form-label float-end">
+					الاســـــــم </label> <input type="text" class="form-control"
+					id="exampleFormControlInput1" maxlength="100" size="100" required>
+			</div>
+			<div class="mb-3">
+				<label for="FormControlInputPhone" class="form-label FormLabelsEn">
+					Registered mobile number of Themari Account </label> <label
+					for="FormControlInputPhone" class="form-label float-end">
+					رقم الجوال المسـجل في ثماري </label> <span style="color: black"><input
+					type="tel" dir="ltr" class="form-control" id="mobile-phone"
+					pattern="[1-9][0-9]{5,}" required></span> <input id="mobile-value"
+					type="hidden" name="mobile-value">
+			</div>
+			<div class="mb-3">
+				<label for="exampleFormControlInput3"
+					class="form-label FormLabelsEn"> ID/Iqama Number </label> <label
+					for="exampleFormControlInput3" class="form-label float-end">
+					رقم الهوية/الإقامة </label> <input type="text" class="form-control"
+					id="exampleFormControlInput3" required pattern="[0-9]{10}">
+			</div>
+			<div class="mb-3">
+				<label for="exampleFormControlInput3"
+					class="form-label FormLabelsEn"> City </label> <label
+					for="exampleFormControlInput3" class="form-label float-end">
+					المدينة </label> <select class="form-select citySelect form-label"
+					id="citySelect" aria-label="Default select example"
+					required="required">
+					<option value="" selected disabled>اختر من القائمة</option>
+				</select>
+
+			</div>
+			<div class="mb-1 p-3 termsCheck">
+				<input class="form-check-input float-end" type="checkbox" value=""
+					id="flexCheckDefault" required> <label
+					class="form-check-label float-end" for="flexCheckDefault"
+					data-bs-toggle="modal" data-bs-target="#exampleModal"> <span
+					class="form-label"> I agree to the terms and conditions </span> / <span
+					class="form-label"> أوافق على الشروط والأحكام </span>
+				</label>
+			</div>
+			<div class="p-2 mb-4">
+				<div class="text-center">
+					<button type="submit" class="btn submitRaffle form-label"
+						id="submit_tmm_enter_draw">
+						<div clss="ar-text">التسـجيل في السحب</div>
+						<div>PARTICIPATE IN THE DRAW</div>
+					</button>
+				</div>
+			</div>
+		</form>
+		<!--RAFFLE REGISTER FORM END ******************-->
+	</div>
+	<!--TERMS BEGIN ******************-->
+	<div class="container text-default-color ar-form">
+		<!--RAFFLE TERMS TEXT BELOW FORM-->
+		<div class="ar-text" style="font-size: 18px;">
+			<div class="terms-heading">شروط المسابقة:</div>
+			<p>▪ لا يشترط الشراء للمشاركة في السحب.</p>
+			<p>▪ يجب أن يكون العميل الفائز عضوا في برنامج ثماري بنفس رقم
+				الجوال المشارك في السحب.</p>
+			<p>▪ يجب أن يكون الفائز في المدن المتواجد فيها فروع أسواق
+				التميمي. المدن: الرياض، الخبر، الدمام، الجبيل، الأحساء، ابها، حفر
+				الباطن، بريدة، عنيزة، الرس، المجمعة، المدينة المنورة،</p>
+			<p>أملج، تبوك.</p>
+			<p>▪ فترة التسجيل من ٢٨ سبتمبر ٢٠٢٢ حتى ١ نوفمبر ٢٠٢٢</p>
+			<p>▪ تواريخ السحب هي ١٣ أكتوبر و ٣ نوفمبر.</p>
+			<p>▪ يتم السحب على السيارات تحت اشراف الغرفة التجارية.</p>
+			<p>▪ يشترط إعادة التسجيل كل أسبوع للمشاركة في سحب السيارة المخصصة
+				لذلك الأسبوع.</p>
+			<p>▪ يمكن للعميل زيادة فرص فوزه عن طريق التسجيل يوميا في الرابط،
+				ويحق له التسجيل مرة واحدة في اليوم.</p>
+			<p>▪ سيتم الاتصال بالفائز عن طريق رقم الجوال المشترك والمسجل في
+				السحب.</p>
+			<p>▪ لا يمكن المطالبة بقيمة الجائزة نقدا وكذلك لا يمكن تغيير نوع
+				ولا لون السيارة.</p>
+			<p>▪ يتحمل الفائز رسوم نقل الملكية وتأمين المركبة وأي تكاليف
+				ناتجة عن الفوز.</p>
+			<p>▪ سيتم تسليم السيارة في المقر الرئيسي بالخبر أو سيتم التأكيد
+				لاحقا.</p>
+			<p>▪ لا يحق لموظفي أسواق التميمي أو مجموعة التميمي والشركات
+				التابعة وأفراد أسرهم الدخول في السحب.</p>
+		</div>
+		<br />
+		<div class="terms-wrapper-en" style="font-size: 18px;">
+			<div class="terms-heading">Contest Rules:</div>
+			<p>▪ Purchase is NOT required to participate.</p>
+			<p>▪ Phone number used to sign up must be the same one used to
+				register on Themari program.</p>
+			<p>▪ Winner must be located in a city where Tamimi Markets
+				branches are available. Cities: Riyadh, Khobar, Dammam, Jubail,
+				Al-Ahsa, Abha, Hafar Al-Batin, Buraydah, Unaizah, Ar Ras, Al
+				Majmaah, Medina, Umluj and Tabuk.</p>
+			<p>▪ Registration period is from September 28th until November
+				1st</p>
+			<p>▪ Prize draw dates: October 13th and November 3rd</p>
+			<p>▪ Car draws will be under the provision of the Chamber of
+				Commerce.</p>
+			<p>▪ Each week will require new registration to be eligible for
+				the draw.</p>
+			<p>▪ Customer may increase winning chances by registering daily
+				and is allowed to register only once a day.</p>
+			<p>▪ Winner will be contacted on the registered phone number.</p>
+			<p>▪ Changing the car’s color or asking for cash is not
+				permitted.</p>
+			<p>▪ The car registration and insurance cost to be paid by the
+				winner.</p>
+			<p>▪ Car will be delivered to Tamimi Markets HQ branch in Khobar
+				or will be confirmed afterwards.</p>
+			<p>▪ Tamimi Markets, Tamimi Group and its subsidiaries' employees
+				and family members are NOT allowed to participate.</p>
+		</div>
+	</div>
+	<!--TERMS END ********************-->
+</body>
+
+<script type="text/javascript">
+	var raffleTicket;
+
+	function displayCities(cities) {
+		var lang = '${member_lang}';
+
+		$("#citySelect").html('');
+		$('#citySelect').append(
+				'<option value="" selected disabled>اختر من القائمة</option>');
+		$.each(cities, function(i, city) {
+			$('#citySelect').append(
+					'<option value="' + city + '"> ' + city + '</option>');
+		});
+		$("#citySelect").val($("#citySelect option:first").val());
+	}
+
+	function getCities() {
+		clearErrorOrSuccess();
+		var jqxhr = $.get("", {
+			action : "GET_RAFFLE_CITIES",
+		}, function(data) {
+			try {
+				var response = JSON.parse(data);
+				displayCities(response.result);
+			} catch (e) {
+				displayMessage('${LANG.GENERAL_ERROR}');
+			}
+		}).fail(function() {
+			displayMessage('${LANG.GENERAL_ERROR}');
+		});
+	}
+
+	function getRaffleConfig() {
+		var jqxhr = $.get("", {
+			action : "GET_CURRENT_RAFFLE_CONFIG",
+		}, function(data) {
+			try {
+				var response = JSON.parse(data);
+				displayWeekInfo(response.result);
+			} catch (e) {
+			}
+
+		});
+	}
+
+	function displayMessage(message) {
+		$("#message").html(message);
+	}
+
+	function displayFullMessage(message) {
+		$("#main-raffles-container").html(message);
+		$("#terms_container").html('');
+	}
+
+	function clearErrorOrSuccess(message) {
+		$("#message").html('');
+		$("#message").removeClass("success");
+		$("#message").removeClass("error");
+	}
+
+	function displayEnterRaffleResponse(response) {
+		clearErrorOrSuccess();
+		var lang = '${member_lang}';
+
+		if (!response) {
+			displayMessage('${LANG.GENERAL_ERROR}');
+		} else if (response.responseCode === 600) {
+			displaySuccessMessage(response.result);
+		} else if (response.responseCode === 702) {
+			displayNotRegisteredError();
+		} else if (response.responseCode === 703) {
+			displayAlreadyEnteredError();
+		} else if (response.responseCode === 704) {
+			displayEmployeeError();
+		} else {
+			displayMessage(response.responseMessage);
+		}
+	}
+
+	function getMobileValue() {
+		var telInput = $("#mobile-phone");
+		var telInputValue = $('#mobile-value');
+		var intlNumberValue = telInput.intlTelInput('getNumber');
+		telInputValue.val(intlNumberValue);
+		return intlNumberValue;
+	}
+
+	function submitEnterRaffleRequest() {
+		console.log("submitEnterRaffleRequest");
+		enableButtons(false);
+		clearErrorOrSuccess();
+		if ($("#enter-raffle-form")[0].reportValidity()) {
+			var jqxhr = $.post("", {
+				action : "ENTER_RAFFLE",
+				city : $("#citySelect").val(),
+				nationalId : $("#exampleFormControlInput3").val(),
+				fullName : $("#exampleFormControlInput1").val(),
+				mobileNo : getMobileValue()
+			}, function(data) {
+				enableButtons(true);
+				if (data) {
+					try {
+						console.log("displayEnterRaffleResponse");
+						displayEnterRaffleResponse(JSON.parse(data));
+					} catch (e) {
+						displayMessage('${LANG.GENERAL_ERROR}');
+					}
+				} else {
+					displayMessage('${LANG.GENERAL_ERROR}');
+				}
+			}).fail(function() {
+				enableButtons(true);
+				displayMessage('${LANG.GENERAL_ERROR}');
+			});
+		} else {
+			enableButtons(true);
+		}
+	}
+
+	function enableButtons(enable) {
+		$("#submit_tmm_enter_draw").prop("disabled", !enable);
+	}
+
+	function addEventListeners() {
+		$("#submit_tmm_enter_draw").on("click", function() {
+			submitEnterRaffleRequest();
+		});
+
+		$("#submit_tmm_enter_draw").on("keypress", function(e) {
+			if (e.which == 13) {
+				submitEnterRaffleRequest();
+			}
+		});
+
+		$("#enter-raffle-form").on("submit", function(e) {
+			e.preventDefault();
+			return false;
+		});
+	}
+
+	function displayNotRegisteredError() {
+		var redirectLink = "http://qr.w69b.com/g/qXa0IGbPa";
+		displayFullMessage('<div class="text-default-color error-messages-wrapper">'
+				+ '<div class="mb-3 text-center">'
+				+ '<div class="ar-text">'
+				+ '<p style="font-size: 25px;">رقم الجوال المدخل غير مسجل في	برنامج ثماري!</p>'
+				+ '<p style="font-size: 41px;">الرجاء التسجيل في برنامج ثماري من	'
+				+ '<a href="' + redirectLink + '" style="text-decoration: underline" class="text-default-color">هنا.</a></p>'
+				+ '<p style="font-size: 25px;">بعد تسجيل عضويتك في ثماري٫ تفضل بزيارة هذه الصفحة مرة أخرى</p>'
+				+ '<p style="font-size: 25px;">للتسجيل في السحب</p>'
+				+ '</div>'
+				+ '<p style="font-size: 25px; font-family: dinregular;">The Phone number entered is not a Themari member!</p>'
+				+ '<p style="font-size: 35px; font-family: dinmedium;">'
+				+ 'Please register in Themari program, click '
+				+ '<a href="' + redirectLink + '" style="text-decoration: underline" class="text-default-color">Here</a></p>'
+				+ '<p style="font-size: 25px; font-family: dinregular;">and revisit this page to participate in the draw</p>'
+				+ '<p style="font-size: 25px; font-family: dinregular;">Good luck!</p>'
+				+ '<button type="submit" class="btn ar-text" style="font-size: 25px;" onClick="window.location.reload();">العودة للصفحة الرئيسية</button>'
+				+ '</div></div>');
+	}
+
+	function displayAlreadyEnteredError() {
+		displayFullMessage('<div class="text-default-color error-messages-wrapper">'
+				+ '<div class="mb-3 text-center">'
+				+ '<div class="ar-text">'
+				+ '<p style="font-size: 25px;">سمك مسجّل في السحب اليوم بالفعل!</p>'
+				+ '<p style="font-size: 25px;">تفضل بزيارة فروع أسواق التميمي يوميًا لزيادة فرصة فوزك</p>'
+				+ '</div></div>'
+				+ '<div class="mb-3 text-center" style="font-size: 25px; font-family: dinregular;">'
+				+ 'Your raffle included in the draw for today, visit tomorrow to update new entry'
+				+ '</div></div>');
+	}
+
+	function displayEmployeeError() {
+		displayFullMessage('<div class="text-default-color error-messages-wrapper">'
+				+ '<div class="mb-3 text-center">'
+				+ '<div class="ar-text">'
+				+ '<p style="font-size: 41px;">عفوا!</p>'
+				+ '<p style="font-size: 25px;">لا يسمح لموظفي أسواق ومجموعة التميمي وأفراد عائلاتهم المشاركة بالسحب بناء على توجيهات وشروط الغرفة التجارية</p>'
+				+ '</div>'
+				+ '<p style="font-size: 41px;font-family: dinmedium;">Sorry!</p>'
+				+ '<p style="font-size: 25px;font-family: dinregular;">Tamimi Markets’ & Tamimi Group’s employees and family members are not allowed to participate in the draw based on the COC instructions</p>'
+				+ '</div></div>');
+	}
+
+	function displaySuccessMessage(raffleTicket) {
+		displayFullMessage('<div class="text-default-color">'
+				+ '<div class="mb-3 text-center">'
+				+ '<div class="ar-text">'
+				+ '<p style="font-size: 41px;">تم التسجيل بنجاح!</p>'
+				+ '<p style="font-size: 41px;">رقم القسيمة: <span id="ticketDivAR">'
+				+ raffleTicket.code
+				+ '</span></p>'
+				+ '<p style="font-size: 25px;">تفضل بزيارة أسواق التميمي والتسجيل بالسحب يوميا</p>'
+				+ '<p style="font-size: 25px;">للاستمتاع بالعروض وزيادة فرص فوزك بالسحب!</p>'
+				+ '</div></div><br />'
+				+ '<div class="mb-3 text-center">'
+				+ '<p style="font-size: 41px;">Your raffle draw ticket: <span id="ticketDivEN" style="text-decoration: underline;">'
+				+ raffleTicket.code
+				+ '</span></p>'
+				+ '<p style="font-size: 25px; font-family: dinregular;">Visit Tamimi Markets and register in the draw daily to enjoy</p>'
+				+ '<p style="font-size: 25px; font-family: dinregular;">the offers and increase your chances to win the draw!</p>'
+				+ '</div>');
+	}
+
+	$("select").change(function() {
+		$('#citySelect').css('color', "black");
+	});
+
+	$(document).ready(function() {
+		getCities();
+		getRaffleConfig();
+		addEventListeners();
+	});
+</script>
+</html>
