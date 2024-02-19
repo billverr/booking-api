@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Login</title>
+</head>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<style>
+body {
+	background-image: url('/img/background.jpg');
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-size: cover;
+	background-position: center;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+form {
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	width: 400px;
+	text-align: center;
+}
+
+h2 {
+	color: #333;
+}
+
+label {
+	display: block;
+	margin: 15px 0 8px 0;
+	color: #666;
+	font-size: 16px;
+	text-align: left;
+}
+
+input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+}
+
+input[type="submit"] {
+	background-color: #005352;
+	color: #fff;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 18px;
+}
+
+input[type="submit"]:hover {
+	background-color: #013333;
+}
+</style>
+<body>
+	<div th:if="${param.error}">Invalid username and password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+	<form id="loginForm" th:action="@{/login}" method="post">
+		<div>
+			<label> User Name : <input type="text" id="username"
+				name="username" />
+			</label>
+		</div>
+		<div>
+			<label> Password: <input type="password" id="password"
+				name="password" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Sign In" />
+		</div>
+	</form>
+</body>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</html>

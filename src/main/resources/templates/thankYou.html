@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thank You</title>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <style>
+    
+        .section {
+            position: relative;
+            height: 100vh;
+        }
+
+        .section .section-center {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        #thank-you {
+        	background-image: url('/img/background.jpg');
+    	   	background-size: cover; 
+            background-position: center;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .thank-you-message {
+            position: relative;
+            max-width: 642px;
+            width: 100%;
+            margin: auto;
+            padding: 40px;
+            overflow: hidden;
+            background-color: #005352;
+            border-radius: 5px;
+            z-index: 20;
+            text-align: center;
+        }
+
+        .thank-you-message h1 {
+            font-weight: 700;
+            text-transform: capitalize;
+            font-size: 42px;
+            margin: 0px;
+            color: #fff;
+        }
+
+        .thank-you-message p {
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .book-another-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #005352;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="thank-you" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="thank-you-message">
+                        <h1>Thank You!</h1>
+                        <p>Your reservation has been confirmed.</p>
+                        <a href="/" class="book-another-link">Book Another Experience</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

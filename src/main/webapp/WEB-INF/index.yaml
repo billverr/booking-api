@@ -1,0 +1,6 @@
+indexes:
+
+- kind: Reservation
+  properties:
+  - name: isoDate
+  - name: timeSlot

@@ -1,3 +1,3 @@
-/Users/vasilisverras/eclipse-workspace/booking-api/src/test/java/com/order/api/ProductCategoryControllerTest.java
-/Users/vasilisverras/eclipse-workspace/booking-api/src/test/java/com/order/api/test/helpers/TestEnvSetup.java
-/Users/vasilisverras/eclipse-workspace/booking-api/src/test/java/com/order/api/test/helpers/ObjectifySetup.java
+/Users/vasilisverras/eclipse-workspace/booking-api/src/test/java/com/innovv8/booking/api/test/helpers/ObjectifySetup.java
+/Users/vasilisverras/eclipse-workspace/booking-api/src/test/java/com/innovv8/booking/api/test/helpers/TestEnvSetup.java
+/Users/vasilisverras/eclipse-workspace/booking-api/src/test/java/com/innovv8/booking/service/ReservationServiceTest.java
