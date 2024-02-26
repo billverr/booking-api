@@ -1,6 +1,7 @@
 package com.innovv8.booking.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -17,6 +18,9 @@ import com.innovv8.booking.objectify.model.Reservation;
 import com.innovv8.booking.objectify.model.Reservation.Property;
 import com.innovv8.booking.utilities.Constants;
 import com.innovv8.booking.utilities.PasswordUtilities;
+import com.innovv8.booking.utilities.Constants.Timeslots;
+import com.innovv8.booking.utilities.DateUtilities.DateFormat;
+import com.innovv8.booking.utilities.DateUtilities;
 import com.philoshopic.objectify.v6.impl.ObjectifyServiceImpl;
 import com.philoshopic.query.helpers.FilterOperator;
 import com.philoshopic.query.helpers.ObjectWrapper;
@@ -44,13 +48,13 @@ public class ReservationService extends ObjectifyServiceImpl<Reservation> {
 
 	public List<String> getAvailableTimeSlots(String isoDate) {
 		List<String> availableTimeSlots = new ArrayList();
-		Set<String> availableTimeSlotsSet = new HashSet<>();
+		
 		List<Reservation> reservations = getByIsoDateOrderByTimeSlot(isoDate);
-		if (reservations.isEmpty()) {
-			availableTimeSlotsSet = Constants.TIME_SLOTS;
-		}
-
-		Map<String, Integer> availableSeats = initializeAvailableSeats();
+		int day = DateUtilities.parseDateAtStartOfDay(isoDate, DateFormat.DATE.toString(),Constants.TIMEZONE_ID).getDay();
+		Set<String> availableTimeSlotsSet = Timeslots.getByDay(day).getTimeSlots();
+		
+		if (!reservations.isEmpty()) {
+		Map<String, Integer> availableSeats = initializeAvailableSeats(	availableTimeSlotsSet);
 		for (Reservation reservation : reservations) {
 			String timeSlot = reservation.getTimeSlot();
 			availableSeats.merge(timeSlot, 0, (currentSeats, reservedSeatsCount) -> currentSeats - 1);
@@ -58,6 +62,7 @@ public class ReservationService extends ObjectifyServiceImpl<Reservation> {
 
 		availableTimeSlotsSet = availableSeats.entrySet().stream().filter(entry -> entry.getValue() > 0)
 				.map(Map.Entry::getKey).collect(Collectors.toSet());
+		}
 
 		availableTimeSlots.addAll(availableTimeSlotsSet);
 		Collections.sort(availableTimeSlots);
@@ -92,9 +97,9 @@ public class ReservationService extends ObjectifyServiceImpl<Reservation> {
 				+ resevation.getMobileNumber() + resevation.getName() + resevation.getOrgId());
 	}
 
-	private Map<String, Integer> initializeAvailableSeats() {
+	private Map<String, Integer> initializeAvailableSeats(	Set<String> 	availableTimeSlotsSet) {
 		Map<String, Integer> availableSeats = new HashMap<>();
-		Constants.TIME_SLOTS.forEach(timeSlot -> availableSeats.put(timeSlot, Constants.AVAILABLE_SEATS_PER_SLOT));
+		availableTimeSlotsSet.forEach(timeSlot -> availableSeats.put(timeSlot, Constants.AVAILABLE_SEATS_PER_SLOT));
 		return availableSeats;
 	}
 

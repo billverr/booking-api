@@ -85,6 +85,10 @@ public class DateUtilities {
 	public static Date parseDateAtStartOfDay(String text, DateTimeFormatter formatter, String timezoneId) {
 		return Date.from(LocalDate.parse(text, formatter).atStartOfDay(ZoneId.of(timezoneId)).toInstant());
 	}
+	
+	public static Date parseDateAtStartOfDay(String text, String pattern, String timezoneId) {
+		return Date.from(LocalDate.parse(text,  DateTimeFormatter.ofPattern(pattern)).atStartOfDay(ZoneId.of(timezoneId)).toInstant());
+	}
 
 	public static Date parseDateTime(String text, DateTimeFormatter formatter, String timezoneId) {
 		return Date.from(LocalDateTime.parse(text, formatter).atZone(ZoneId.of(timezoneId)).toInstant());

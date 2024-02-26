@@ -24,7 +24,7 @@
 		<!-- App Engine -->
 		<appengine.maven.plugin.version>2.8.0</appengine.maven.plugin.version>
 		<project.id.gcp>innovv8</project.id.gcp>
-		<philoshopic.objectify6.version>2-0-0-SNAPSHOT</philoshopic.objectify6.version>
+		<philoshopic.objectify6.version>3-1-0</philoshopic.objectify6.version>
 	</properties>
 
 	<dependencies>
@@ -145,13 +145,6 @@
 					<projectId>${project.id.gcp}</projectId>
 					<version>${project.version}</version>
 					<promote>false</promote>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
 				</configuration>
 			</plugin>
 			<plugin>

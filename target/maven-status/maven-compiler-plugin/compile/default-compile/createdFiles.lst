@@ -4,6 +4,7 @@ com/innovv8/booking/utilities/DateUtilities.class
 com/innovv8/booking/objectify/dao/impl/ReservationDaoImpl.class
 com/innovv8/booking/objectify/dao/impl/OfyDaoFactory$UserDAOHolder.class
 com/innovv8/booking/objectify/dao/EventDao.class
+com/innovv8/booking/utilities/Constants$Timeslots.class
 com/innovv8/booking/exception/OrderAPIException.class
 com/innovv8/booking/utilities/JsonUtilities.class
 com/innovv8/booking/utilities/PasswordUtilities$macUtil.class

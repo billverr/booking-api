@@ -5,12 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
 import com.innovv8.booking.api.test.helpers.ObjectifySetup;
 import com.innovv8.booking.objectify.model.Reservation;
 import com.innovv8.booking.utilities.Constants;
+import com.innovv8.booking.utilities.Constants.Timeslots;
 
 public class ReservationServiceTest extends ObjectifySetup {
 
@@ -20,8 +22,10 @@ public class ReservationServiceTest extends ObjectifySetup {
 	public void testGetAvailableTimeSlots_WhenNoReservations_ThenReturnTIME_SLOTS() {
 		List<String> result = service.getAvailableTimeSlots("2024-02-08");
 
-		assertEquals(Constants.TIME_SLOTS.size(), result.size());
-		for (String timeSlot : Constants.TIME_SLOTS) {
+		Set<String> dayTimeslots = Timeslots.THURSDAY.getTimeSlots();
+		
+		assertEquals(dayTimeslots.size(), result.size());
+		for (String timeSlot : dayTimeslots) {
 			assertTrue(result.contains(timeSlot));
 		}
 	}
@@ -37,7 +41,9 @@ public class ReservationServiceTest extends ObjectifySetup {
 
 		List<String> result = service.getAvailableTimeSlots(isoDate);
 
-		assertEquals(Constants.TIME_SLOTS.size() - 1, result.size());
+		Set<String> dayTimeslots = Timeslots.THURSDAY.getTimeSlots();
+		
+		assertEquals(dayTimeslots.size() - 1, result.size());
 		assertFalse(result.contains(timeSlot));
 	}
 
@@ -52,7 +58,9 @@ public class ReservationServiceTest extends ObjectifySetup {
 
 		List<String> result = service.getAvailableTimeSlots(isoDate);
 
-		assertEquals(Constants.TIME_SLOTS.size(), result.size());
+		Set<String> dayTimeslots = Timeslots.THURSDAY.getTimeSlots();
+		
+		assertEquals(dayTimeslots.size(), result.size());
 		assertTrue(result.contains(timeSlot));
 	}
 
@@ -66,8 +74,10 @@ public class ReservationServiceTest extends ObjectifySetup {
 		}
 
 		List<String> result = service.getAvailableTimeSlots(isoDate);
+		
+		Set<String> dayTimeslots = Timeslots.THURSDAY.getTimeSlots();
 
-		assertEquals(Constants.TIME_SLOTS.size() - 1, result.size());
+		assertEquals(dayTimeslots.size() - 1, result.size());
 		assertFalse(result.contains(timeSlot));
 	}
 }
